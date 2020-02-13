@@ -78,24 +78,23 @@ const arrayOfFunctions = [
   function anyTwo() {
     workingOutput = workingOutput.toLowerCase();
     const spaceAndHyphens = [];
-    let space = workingOutput.indexOf(" ");
-    let spaceCount = 0;
-    let hyphen = workingOutput.indexOf("-");
-    let hyphenCount = 0;
-    do {
-      spaceCount++;
+    let space;
+    let hyphen;
+
+    for (
+      space = workingOutput.indexOf(" ");
+      space !== -1;
+      space = workingOutput.indexOf(" ", space + 1)
+    ) {
       spaceAndHyphens.push(space);
-      space = workingOutput.indexOf(" ", space + 1);
-      console.log(space);
-      console.log(spaceAndHyphens);
-    } while (space !== -1);
-    do {
-      hyphenCount++;
+    }
+    for (
+      hyphen = workingOutput.indexOf("-");
+      hyphen !== -1;
+      hyphen = workingOutput.indexOf("-", hyphen + 1)
+    ) {
       spaceAndHyphens.push(hyphen);
-      hyphen = workingOutput.indexOf("-", hyphen + 1);
-      console.log(hyphen);
-      console.log(spaceAndHyphens);
-    } while (hyphen !== -1);
+    }
     spaceAndHyphens.forEach(capitalizeNext);
     function capitalizeNext(number) {
       workingOutput =
